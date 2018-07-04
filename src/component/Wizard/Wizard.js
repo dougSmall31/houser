@@ -2,7 +2,11 @@ import React, { Component } from "react";
 
 class Wizard extends Component {
   render() {
-    return <div>Wizard</div>;
+    return;
+    <div>
+      <div>Wizard</div>
+      <button>Cancel</button>
+    </div>;
   }
 }
 
