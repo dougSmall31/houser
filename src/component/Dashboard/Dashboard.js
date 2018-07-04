@@ -4,16 +4,17 @@ import { Link } from "react-router-dom";
 
 class Dashboard extends Component {
   render() {
-    return;
-    <div>
-      <div>Dashboard</div>;
+    return (
       <div>
-        <Link to="/wizard">
-          <button>Add New Property</button>
-        </Link>
+        <div>Dashboard</div>;
+        <div>
+          <Link to="/wizard">
+            <button>Add New Property</button>
+          </Link>
+        </div>
+        <House />
       </div>
-      <House />;
-    </div>;
+    );
   }
 }
 
