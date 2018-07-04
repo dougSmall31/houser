@@ -10,14 +10,16 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-const port = process.env.PORT || 4000;
-
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
-
 massive(process.env.CONNECTION_STRING)
   .then(dbInstance => {
     app.set("db", dbInstance);
   })
   .catch(err => console.log(err));
+
+app.get("/api/houses", controller.get);
+
+const port = process.env.PORT || 4000;
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});
