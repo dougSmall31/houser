@@ -40,7 +40,7 @@ class Wizard extends Component {
           />
         </div>
         <div>
-          Address:123
+          Address:
           <input
             address={this.state.address}
             onChange={e => this.addressInput(e.target.value)}

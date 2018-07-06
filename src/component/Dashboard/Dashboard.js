@@ -22,27 +22,16 @@ class Dashboard extends Component {
   }
 
   render() {
+    console.log("this is this.state in parent", this.state);
     return (
       <div>
         <div>Dashboard</div>
-        <div>
-          <div>Home Listings</div>
-          {this.state.houseList.map(house => (
-            <div>
-              Property Name: {house.name}
-              Address: {house.address}
-              City: {house.city}
-              State: {house.state}
-              Zip: {house.zipcode}
-            </div>
-          ))}
-        </div>
+        <House houses={this.state.houseList} />
         <div>
           <Link to="/wizard">
             <button>Add New Property</button>
           </Link>
         </div>
-        <House />
       </div>
     );
   }
