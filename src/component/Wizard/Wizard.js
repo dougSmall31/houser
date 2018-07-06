@@ -12,8 +12,6 @@ class Wizard extends Component {
       zipcode: ""
     };
   }
-  //may need to include ID if doesn't auto increment
-  //test functionallity with console.log(this.state)
   nameInput = value => {
     this.setState({ name: value });
   };
@@ -29,6 +27,7 @@ class Wizard extends Component {
   zipInput = value => {
     this.setState({ zipcode: value });
   };
+
   render() {
     return (
       <div>
@@ -41,7 +40,7 @@ class Wizard extends Component {
           />
         </div>
         <div>
-          Address:
+          Address:123
           <input
             address={this.state.address}
             onChange={e => this.addressInput(e.target.value)}

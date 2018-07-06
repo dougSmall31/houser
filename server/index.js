@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const bodyParser = require("body-parser");
 const massive = require("massive");
@@ -10,8 +11,10 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-massive(process.env.CONNECTION_STRING)
+massive(process.env.CONNECTION_STRING, { scripts: path.join(__dirname, "db") })
   .then(dbInstance => {
+    console.log("set dbinstance");
+
     app.set("db", dbInstance);
   })
   .catch(err => console.log(err));
