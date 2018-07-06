@@ -20,6 +20,7 @@ massive(process.env.CONNECTION_STRING, { scripts: path.join(__dirname, "db") })
   .catch(err => console.log(err));
 
 app.get("/api/houses", controller.get);
+app.post("/api/houses", controller.post);
 
 const port = process.env.PORT || 4000;
 
