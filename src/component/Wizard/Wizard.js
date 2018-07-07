@@ -3,6 +3,8 @@ import { Link, Route, Switch } from "react-router-dom";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import StepThree from "./StepThree";
+import { connect } from "react-redux";
+import { cancelForm } from "../../ducks/reducer";
 
 class Wizard extends Component {
   constructor() {
@@ -18,14 +20,17 @@ class Wizard extends Component {
           <Route component={StepThree} path="/wizard/step3" />
         </Switch>
         <Link to="/">
-          <button>Cancel</button>
+          <button onClick={this.props.cancelForm}>Cancel</button>
         </Link>
       </div>
     );
   }
 }
 
-export default Wizard;
+export default connect(
+  null,
+  { cancelForm }
+)(Wizard);
 
 // class Wizard extends Component {
 //   constructor() {

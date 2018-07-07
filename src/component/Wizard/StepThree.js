@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { updateMort, updateRent } from "../../ducks/reducer";
 
 const BASE_URL = "http://localhost:4000";
 
 class StepThree extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      mortgage: "",
-      rent: ""
+      mortgage: this.props.mortgage || "",
+      rent: this.props.rent || ""
     };
   }
   mortInput = value => {
@@ -19,12 +21,10 @@ class StepThree extends Component {
     this.setState({ rent: value });
   };
   addHouseHandler = () => {
-    console.log(this.state);
-
     axios({
       method: "POST",
       url: BASE_URL + "/api/houses",
-      data: this.state
+      data: this.props
     }).then(() => {
       this.props.history.push("/");
     });
@@ -37,11 +37,19 @@ class StepThree extends Component {
           <h3>Recommended Rent:</h3>
           <div>
             <h2>Monthly Mortgage Amount</h2>
-            <input onChange={e => this.mortInput(e.target.value)} />
+            <input
+              mortgage={this.state.mortgage}
+              onChange={e => this.mortInput(e.target.value)}
+              value={this.state.mortgage}
+            />
           </div>
           <div>
             <h2>Desired Monthly Rent</h2>
-            <input onChange={e => this.rentInput(e.target.value)} />
+            <input
+              rent={this.state.rent}
+              onChange={e => this.rentInput(e.target.value)}
+              value={this.state.rent}
+            />
           </div>
         </div>
         <div>
@@ -56,4 +64,22 @@ class StepThree extends Component {
     );
   }
 }
-export default StepThree;
+function mapStateToProps(state) {
+  const {
+    name,
+    address,
+    city,
+    state1,
+    zipcode,
+    imgUrl,
+    mortgage,
+    rent
+  } = state;
+
+  return { name, address, city, state1, zipcode, imgUrl, mortgage, rent };
+}
+
+export default connect(
+  mapStateToProps,
+  { updateMort, updateRent }
+)(StepThree);
