@@ -13,7 +13,6 @@ module.exports = {
 
   post: (req, res) => {
     const dbInstance = req.app.get("db");
-    console.log("req.body", req.body, "req.bdy");
     const { name, address, city, state, zipcode } = req.body;
 
     dbInstance
@@ -24,4 +23,15 @@ module.exports = {
         console.log(err);
       });
   }
+  // delete: (req, res) => {
+  //   const dbInstance = req.app.get("db");
+
+  //   dbInstance
+  //     .delete_house([id, name, address, city, state, zipcode])
+  //     .then(() => res.sendStatus(200, "All good!"))
+  //     .catch(err => {
+  //       res.status(500).send({ errorMessage: "Server Error!" });
+  //       console.log(err);
+  //     });
+  // }
 };

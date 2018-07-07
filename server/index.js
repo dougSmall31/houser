@@ -21,6 +21,7 @@ massive(process.env.CONNECTION_STRING, { scripts: path.join(__dirname, "db") })
 
 app.get("/api/houses", controller.get);
 app.post("/api/houses", controller.post);
+// app.delete("/api/houses:id", controller.delete);
 
 const port = process.env.PORT || 4000;
 

@@ -20,6 +20,7 @@ class Dashboard extends Component {
       this.setState({ houseList: response.data });
     });
   }
+  //deletehouse axios request pass id
 
   render() {
     console.log("this is this.state in parent", this.state);
@@ -30,6 +31,7 @@ class Dashboard extends Component {
         <div>
           <Link to="/wizard">
             <button>Add New Property</button>
+            {/* delete={deletehouse} */}
           </Link>
         </div>
       </div>

@@ -7,7 +7,6 @@ import route from "./route";
 
 class App extends Component {
   render() {
-    console.log("this is route", route);
     return (
       <div>
         {route}
