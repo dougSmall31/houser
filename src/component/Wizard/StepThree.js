@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateMort, updateRent } from "../../ducks/reducer";
+import { updateMort, updateRent, cancelForm } from "../../ducks/reducer";
 
 const BASE_URL = "http://localhost:4000";
 
@@ -21,16 +21,44 @@ class StepThree extends Component {
     this.setState({ rent: value });
   };
   addHouseHandler = () => {
+    const {
+      name,
+      address,
+      city,
+      state1,
+      zipcode,
+      imgUrl,
+      mortgage,
+      rent
+    } = this.props;
+    console.log("checking post", {
+      name,
+      address,
+      city,
+      state1,
+      imgUrl,
+      ...this.state
+    });
     axios({
       method: "POST",
       url: BASE_URL + "/api/houses",
-      data: this.props
+      data: {
+        name,
+        address,
+        city,
+        state1,
+        imgUrl,
+        zipcode,
+        ...this.state
+      }
     }).then(() => {
       this.props.history.push("/");
     });
   };
 
   render() {
+    console.log(this.props, "this is props", this.state, "this is state");
+
     return (
       <div>
         <div>
@@ -81,5 +109,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps,
-  { updateMort, updateRent }
+  { updateMort, updateRent, cancelForm }
 )(StepThree);

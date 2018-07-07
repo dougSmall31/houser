@@ -13,10 +13,28 @@ module.exports = {
 
   post: (req, res) => {
     const dbInstance = req.app.get("db");
-    const { name, address, city, state, zipcode } = req.body;
+    const {
+      name,
+      address,
+      city,
+      state,
+      zipcode,
+      img,
+      mortgage,
+      rent
+    } = req.body;
 
     dbInstance
-      .post_house([name, address, city, state, Number(zipcode)])
+      .post_house([
+        name,
+        address,
+        city,
+        state,
+        Number(zipcode),
+        img,
+        mortgage,
+        rent
+      ])
       .then(() => res.sendStatus(200, "All good!"))
       .catch(err => {
         res.status(500).send({ errorMessage: "Server Error!" });

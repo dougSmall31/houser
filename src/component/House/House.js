@@ -9,11 +9,19 @@ const House = props => {
       {props.houses.map(house => (
         <div>
           {/* line breaks */}
-          Property Name: {house.name}
-          Address: {house.address}
-          City: {house.city}
-          State: {house.state}
-          Zip: {house.zipcode}
+          <a src={house.imgUrl} />
+          <ul>
+            <li>Property Name: {house.name}</li>
+            <li>Address: {house.address}</li>
+            <li>City: {house.city}</li>
+            <li>State: {house.state}</li>
+            <li>Zip: {house.zipcode}</li>
+          </ul>
+
+          <ul>
+            <li>Monthly Mortgage: {house.mortgage}</li>
+            <li>Desired Rent: {house.rent}</li>
+          </ul>
           <button
           //onClick=deletehandler()
           //houses.filter(house => house.id !== req.params.id
