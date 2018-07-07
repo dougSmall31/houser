@@ -23,15 +23,13 @@ class Dashboard extends Component {
   //deletehouse axios request pass id
 
   render() {
-    console.log("this is this.state in parent", this.state);
     return (
       <div>
         <div>Dashboard</div>
         <House houses={this.state.houseList} />
         <div>
-          <Link to="/wizard">
+          <Link to="/wizard/step1">
             <button>Add New Property</button>
-            {/* delete={deletehouse} */}
           </Link>
         </div>
       </div>

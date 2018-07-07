@@ -9,8 +9,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {route}
         <Header />
+        {route}
       </div>
     );
   }
